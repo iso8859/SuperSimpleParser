@@ -36,6 +36,7 @@ namespace SuperSimpleParser
                     }
                     current = current0;
                     accumulator.Clear();
+                    searchForEnd = "";
                 }
                 else
                 {
