@@ -24,6 +24,29 @@ namespace SuperSimpleParser
             CommandLineParser parser = CommandLineParser.Parse("-angle 180 -type deg");
             Console.WriteLine(parser.GetInt32("angle") + 10);
             Console.WriteLine(parser.GetString("type"));
+
+            /*
+Output
+---
+program=D:\dev\SuperSimpleParser\bin\Debug\netcoreapp3.1\SuperSimpleParser.dll
+---
+t=john@acme.com
+f=webmaster@acme.com
+o=Test mail
+b=body.txt
+j=report1.pdf, report2.pdf
+zip=true
+---
+t=john@acme.com
+f=webmaster@acme.com
+o=Test mail
+b=body.txt
+j=report.pdf, second file.txt
+zip=true
+---
+190
+deg
+            */
         }
     }
 }
