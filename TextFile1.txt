@@ -1,0 +1,5 @@
+﻿-t john@acme.com -f webmaster@acme.com -o "Test mail" -b body.txt 
+-j 
+report.pdf 
+-j 'second  file.txt' 
+-zip
