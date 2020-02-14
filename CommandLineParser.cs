@@ -107,7 +107,7 @@ namespace SuperSimpleParser
             return result;
         }
 
-        // You can use the dictionnary or GetArgs
+        // You can use the dictionnary or getters
         public void Dump()
         {
             foreach (var arg in args)

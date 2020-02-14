@@ -21,9 +21,10 @@ namespace SuperSimpleParser
             // You can read from a file that contain \r \n
             Test(System.IO.File.ReadAllText("TextFile1.txt"));
 
-            CommandLineParser parser = CommandLineParser.Parse("-angle 180 -type deg");
+            CommandLineParser parser = CommandLineParser.Parse("--angle 180 -type deg -visible");
             Console.WriteLine(parser.GetInt32("angle") + 10);
             Console.WriteLine(parser.GetString("type"));
+            Console.WriteLine(parser.GetBool("visible"));
 
             /*
 Output
@@ -46,6 +47,7 @@ zip=true
 ---
 190
 deg
+True
             */
         }
     }
