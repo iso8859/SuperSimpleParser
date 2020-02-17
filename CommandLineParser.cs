@@ -47,18 +47,28 @@ namespace SuperSimpleParser
                             accumulator.Add(item0.Substring(0, item0.Length - searchForEnd.Length));
                             searchForEnd = "";
                         }
+                        else
+                            accumulator.Add(item0);
                     }
                     else
                     {
                         if (item0.StartsWith("'"))
                         {
-                            accumulator.Add(item0.Substring(1));
+                            var tmp = item0.Trim('\'');
+                            accumulator.Add(tmp);
                             searchForEnd = "'";
                         }
                         else if (item0.StartsWith("\""))
                         {
-                            accumulator.Add(item0.Substring(1));
+                            var tmp = item0.Trim('\"');
+                            accumulator.Add(tmp);
                             searchForEnd = "\"";
+                        }
+                        else if (item0.StartsWith("#"))
+                        {
+                            var tmp = item0.Trim('#');
+                            accumulator.Add(tmp);
+                            searchForEnd = "#";
                         }
                         else
                             accumulator.Add(item0);
