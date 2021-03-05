@@ -52,19 +52,19 @@ namespace SuperSimpleParser
                     }
                     else
                     {
-                        if (item0.StartsWith("'"))
+                        if (item0.StartsWith("'") && accumulator.Count == 0)
                         {
                             var tmp = item0.Trim('\'');
                             accumulator.Add(tmp);
                             searchForEnd = "'";
                         }
-                        else if (item0.StartsWith("\""))
+                        else if (item0.StartsWith("\"") && accumulator.Count == 0)
                         {
                             var tmp = item0.Trim('\"');
                             accumulator.Add(tmp);
                             searchForEnd = "\"";
                         }
-                        else if (item0.StartsWith("#"))
+                        else if (item0.StartsWith("#") && accumulator.Count == 0)
                         {
                             var tmp = item0.Trim('#');
                             accumulator.Add(tmp);
