@@ -8,6 +8,8 @@ namespace SuperSimpleParser
     {
         public Dictionary<string, List<string>> args = new Dictionary<string, List<string>>();
 
+        public static CommandLineParser Parse() => Parse(Environment.CommandLine);
+
         public static CommandLineParser Parse(string cmdLine)
         {
             CommandLineParser result = new CommandLineParser();
