@@ -21,11 +21,12 @@ namespace SuperSimpleParser
             // You can read from a file that contain \r \n
             Test(System.IO.File.ReadAllText("TextFile1.txt"));
 
-            CommandLineParser parser = CommandLineParser.Parse("--angle 180 -type deg -visible -path #with sharp separator#");
+            CommandLineParser parser = CommandLineParser.Parse("--angle 180 -type deg -visible -path #with sharp separator# -env TEMP");
             Console.WriteLine(parser.GetInt32("angle") + 10);
             Console.WriteLine(parser.GetString("type"));
             Console.WriteLine(parser.GetBool("visible"));
             Console.WriteLine(parser.GetString("path"));
+            Console.WriteLine(parser.GetEnv("env"));
 
             /*
 Output

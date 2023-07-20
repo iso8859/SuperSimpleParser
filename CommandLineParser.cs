@@ -31,7 +31,7 @@ public class CommandLineParser
                     if (!result.args.ContainsKey(current))
                         result.args[current] = new List<string>();
                     if (accumulator.Count > 0)
-                        result.args[current].Add(string.Join(" ", accumulator));
+                        result.args[current].Add(string.Join(" ", accumulator.ToArray()));
                     else
                         result.args[current].Add("true");
                 }
@@ -81,7 +81,7 @@ public class CommandLineParser
             if (!result.args.ContainsKey(current))
                 result.args[current] = new List<string>();
             if (accumulator.Count > 0)
-                result.args[current].Add(string.Join(" ", accumulator));
+                result.args[current].Add(string.Join(" ", accumulator.ToArray()));
             else
                 result.args[current].Add("true");
 
@@ -130,6 +130,14 @@ public class CommandLineParser
         if (fi.Exists)
             return fi;
         return new FileInfo(Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName), Path.GetFileName(file)));
+    }
+
+    public string GetEnv(string name, string _default = "", int index = 0)
+    {
+        string result = GetString(name, _default, index);
+        if (!string.IsNullOrEmpty(result))
+            result = Environment.GetEnvironmentVariable(result);
+        return result;
     }
 
     // You can use the dictionnary or getters
