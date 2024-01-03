@@ -126,10 +126,17 @@ public class CommandLineParser
         FileInfo fi = new FileInfo(name);
         if (fi.Exists)
             return fi;
+        fi = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), file));
+        if (fi.Exists)
+            return fi;
         fi = new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), Path.GetFileName(file)));
         if (fi.Exists)
             return fi;
-        return new FileInfo(Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName), Path.GetFileName(file)));
+        fi =  new FileInfo(Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName), Path.GetFileName(file)));
+        if (fi.Exists)
+            return fi;
+        fi = new FileInfo(Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName), file));
+        return fi;
     }
 
     public string GetEnv(string name, string _default = "", int index = 0)
