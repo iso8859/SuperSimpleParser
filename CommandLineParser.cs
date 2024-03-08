@@ -135,7 +135,8 @@ public class CommandLineParser
         fi =  new FileInfo(Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName), Path.GetFileName(file)));
         if (fi.Exists)
             return fi;
-        fi = new FileInfo(Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName), file));
+        if (!string.IsNullOrEmpty(file))
+            fi = new FileInfo(Path.Combine(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName), file));
         return fi;
     }
 
